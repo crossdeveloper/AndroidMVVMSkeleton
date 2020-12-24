@@ -6,7 +6,7 @@ import com.crossdeveloper.mvvmskeleton.data.restapi.Server
 import io.reactivex.Single
 
 class CountryRepository(private val api: HolidaysApi) {
-    fun getCountryList(country: String): Single<List<CountryData>> {
+    fun getCountryList(): Single<List<CountryData>> {
         val params = mapOf("key" to Server.apiKey)
         return api.getCountries(params)
                 .map { response->
