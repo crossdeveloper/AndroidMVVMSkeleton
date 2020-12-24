@@ -4,6 +4,7 @@ import com.crossdeveloper.mvvmskeleton.data.model.HolidayData
 import com.crossdeveloper.mvvmskeleton.data.model.HolidaysData
 
 data class HolidaysDto (
+        val status: Int,
         val holidays: List<HolidayDto>
 ) {
     fun toData(): HolidaysData {
@@ -14,13 +15,12 @@ data class HolidaysDto (
 }
 
 data class HolidayDto (
-        val name: String?,
+        val name: String,
         val date: String?,
         val country: String?,
         val `public`: Boolean?
 ) {
     fun toData(): HolidayData {
-        return HolidayData(name, date, country, public)
+        return HolidayData(name = name, date = date, country = country, public = public)
     }
-
 }
