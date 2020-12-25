@@ -21,7 +21,7 @@ android {
     buildFeatures{
         dataBinding = true
         // for view binding :
-        // viewBinding = true
+        viewBinding = true
     }
 
     buildTypes {
@@ -79,6 +79,10 @@ dependencies {
     implementation "org.koin:koin-androidx-ext:2.0.1"
     // Koin for Kotlin apps
     implementation 'org.koin:koin-core:2.0.1'
+
+    // SDP,SSP
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.intuit.ssp:ssp-android:1.0.6'
 
     // network
     implementation "com.squareup.retrofit2:retrofit:2.6.2"
