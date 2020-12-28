@@ -45,8 +45,8 @@ class CountryListFragment : BindingFragment<FragmentCountryListBinding>(), Count
                 adapter.notifyDataSetChanged()
             })
 
-            viewModel.isLoading.observe(viewLifecycleOwner, { isSending ->
-                if (isSending) {
+            viewModel.isLoading.observe(viewLifecycleOwner, { isLoading ->
+                if (isLoading) {
                     (activity as BaseActivity).showHUD()
                 } else {
                     (activity as BaseActivity).dismissHUD()

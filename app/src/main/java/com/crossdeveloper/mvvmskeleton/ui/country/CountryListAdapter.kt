@@ -2,6 +2,7 @@ package com.crossdeveloper.mvvmskeleton.ui.country
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -25,7 +26,7 @@ class CountryListAdapter(private val clickCountryListener: ClickCountryListener)
     ) : RecyclerView.ViewHolder(LayoutInflater.from(parent.context).inflate(itemViewLayoutId, parent, false)) {
 
         fun render(country: CountryData) {
-
+            itemView.findViewById<TextView>(R.id.country_nameTV).text = country.name
         }
     }
 
