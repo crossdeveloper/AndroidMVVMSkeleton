@@ -3,19 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/country_list_list_fragment">
+    app:startDestination="@id/countryListFragment">
     <fragment
-        android:id="@+id/country_list_list_fragment"
+        android:id="@+id/countryListFragment"
         tools:layout="@layout/fragment_country_list"
         android:name="com.crossdeveloper.mvvmskeleton.ui.country.CountryListFragment">
         <action
-            android:id="@+id/action_country_list_list_fragment_to_holiday_list_fragment"
-            app:destination="@id/holiday_list_fragment" />
+            android:id="@+id/startHolidayList"
+            app:destination="@id/holidayListFragment">
+
+            <argument
+                android:name="countryCode"
+                app:argType="string"
+                android:defaultValue=""/>
+        </action>
     </fragment>
 
     <fragment
-        android:id="@+id/holiday_list_fragment"
+        android:id="@+id/holidayListFragment"
         tools:layout="@layout/fragment_holiday_list"
         android:name="com.crossdeveloper.mvvmskeleton.ui.holiday.HolidayListFragment">
+
+        <argument
+            android:name="countryCode"
+            app:argType="string"
+            app:nullable="true"/>
     </fragment>
 </navigation>

@@ -3,6 +3,7 @@ package com.crossdeveloper.mvvmskeleton.ui.holiday
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.LayoutRes
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.crossdeveloper.mvvmskeleton.R
 import com.crossdeveloper.mvvmskeleton.data.base.BaseActivity
@@ -17,6 +18,8 @@ class HolidayListFragment:BindingFragment<FragmentHolidayListBinding>(), Holiday
     @LayoutRes
     override fun getLayoutResId() = R.layout.fragment_holiday_list
     private val adapter by lazy { HolidayListAdapter(this) }
+
+    val args: HolidayListFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,7 +37,7 @@ class HolidayListFragment:BindingFragment<FragmentHolidayListBinding>(), Holiday
     }
 
     private fun observers() {
-        binding.viewModel?.loadHolidays()
+        binding.viewModel?.loadHolidays(args.countryCode ?: "")
         binding.viewModel?.let { viewModel->
             viewModel.holidays.observe(viewLifecycleOwner, {
                 adapter.submitList(it)

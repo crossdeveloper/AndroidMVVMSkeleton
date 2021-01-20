@@ -7,7 +7,7 @@ import io.reactivex.Single
 
 class HolidayRepository (private val api: HolidaysApi) {
     fun getHolidayList(country: String): Single<List<HolidayData>> {
-        val params = mapOf("key" to Server.apiKey, "country" to country, "year" to "2021")
+        val params = mapOf("key" to Server.apiKey, "country" to country, "year" to "2020")
         return api.getHolidays(params)
                 .map { response->
                     response.body()?.holidays?.map {  it.toData() }

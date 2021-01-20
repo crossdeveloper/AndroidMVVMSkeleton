@@ -3,6 +3,7 @@ package com.crossdeveloper.mvvmskeleton.ui.country
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.LayoutRes
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.crossdeveloper.mvvmskeleton.R
 import com.crossdeveloper.mvvmskeleton.data.base.BaseActivity
@@ -62,9 +63,10 @@ class CountryListFragment : BindingFragment<FragmentCountryListBinding>(), Count
     }
 
     override fun onClickItem(country: CountryData) {
-
-        CountryListFragmentD
-
-    }
+        country.code?.let {
+            val action = CountryListFragmentDirections.startHolidayList(it)
+            findNavController().navigate(action)
+        }
+   }
 }
 
