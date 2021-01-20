@@ -1,4 +1,4 @@
-package com.crossdeveloper.mvvmskeleton.ui.country
+package com.crossdeveloper.mvvmskeleton.ui.holiday
 
 import android.os.Bundle
 import android.view.View
@@ -7,17 +7,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.crossdeveloper.mvvmskeleton.R
 import com.crossdeveloper.mvvmskeleton.data.base.BaseActivity
 import com.crossdeveloper.mvvmskeleton.data.base.BindingFragment
-import com.crossdeveloper.mvvmskeleton.data.model.CountryData
-import com.crossdeveloper.mvvmskeleton.databinding.FragmentCountryListBinding
+import com.crossdeveloper.mvvmskeleton.data.model.HolidayData
+import com.crossdeveloper.mvvmskeleton.databinding.FragmentHolidayListBinding
 import com.crossdeveloper.mvvmskeleton.extensions.toast
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
-class CountryListFragment : BindingFragment<FragmentCountryListBinding>(), CountryListAdapter.OnClickItemListener {
+class HolidayListFragment:BindingFragment<FragmentHolidayListBinding>(), HolidayListAdapter.OnClickItemListener {
 
     @LayoutRes
-    override fun getLayoutResId() = R.layout.fragment_country_list
-
-    private val adapter by lazy { CountryListAdapter(this)}
+    override fun getLayoutResId() = R.layout.fragment_holiday_list
+    private val adapter by lazy { HolidayListAdapter(this) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -30,14 +29,14 @@ class CountryListFragment : BindingFragment<FragmentCountryListBinding>(), Count
     }
 
     private fun initListeners() {
-        binding.countryList.layoutManager = LinearLayoutManager(activity)
-        binding.countryList.adapter = adapter
+        binding.holidayList.layoutManager = LinearLayoutManager(activity)
+        binding.holidayList.adapter = adapter
     }
 
     private fun observers() {
-        binding.viewModel?.loadCountries()
+        binding.viewModel?.loadHolidays()
         binding.viewModel?.let { viewModel->
-            viewModel.countries.observe(viewLifecycleOwner, {
+            viewModel.holidays.observe(viewLifecycleOwner, {
                 adapter.submitList(it)
                 adapter.notifyDataSetChanged()
             })
@@ -58,13 +57,10 @@ class CountryListFragment : BindingFragment<FragmentCountryListBinding>(), Count
                 }
             })
         }
+    }
+
+    override fun onClickItem(holiday: HolidayData) {
 
     }
 
-    override fun onClickItem(country: CountryData) {
-
-        CountryListFragmentD
-
-    }
 }
-

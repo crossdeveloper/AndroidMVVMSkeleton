@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.ListAdapter
 import com.crossdeveloper.mvvmskeleton.R
 import com.crossdeveloper.mvvmskeleton.data.model.CountryData
 
-class CountryListAdapter(private val clickCountryListener: ClickCountryListener)
+class CountryListAdapter(private val onClickItemListener: OnClickItemListener)
     :ListAdapter<CountryData, CountryListAdapter.CountryItemViewHolder> (COUNTRY_COMPARATOR){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryItemViewHolder =
@@ -27,11 +27,14 @@ class CountryListAdapter(private val clickCountryListener: ClickCountryListener)
 
         fun render(country: CountryData) {
             itemView.findViewById<TextView>(R.id.country_nameTV).text = country.name
+            itemView.setOnClickListener {
+                onClickItemListener.onClickItem(country)
+            }
         }
     }
 
-    interface ClickCountryListener {
-        fun onClickCountry(country: CountryData)
+    interface OnClickItemListener {
+        fun onClickItem(country: CountryData)
     }
 
     companion object {

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.crossdeveloper.mvvmskeleton.ui.SharedViewModel" />
+            type="com.crossdeveloper.mvvmskeleton.ui.country.CountryListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
